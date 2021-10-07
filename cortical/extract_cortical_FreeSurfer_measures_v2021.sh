@@ -39,7 +39,6 @@ printf "%g," `cat ${subj_id}/stats/rh.aparc.stats | grep WhiteSurfArea | awk -F,
 printf "%f" `cat ${subj_id}/stats/aseg.stats | grep IntraCranialVol | awk -F, '{print $4}'` >> ${dir}CorticalMeasuresENIGMA_ThickAvg.csv
 printf "%f" `cat ${subj_id}/stats/aseg.stats | grep IntraCranialVol | awk -F, '{print $4}'` >> ${dir}CorticalMeasuresENIGMA_SurfAvg.csv
 
-
 echo "" >> ${dir}CorticalMeasuresENIGMA_ThickAvg.csv
 echo "" >> ${dir}CorticalMeasuresENIGMA_SurfAvg.csv
 
