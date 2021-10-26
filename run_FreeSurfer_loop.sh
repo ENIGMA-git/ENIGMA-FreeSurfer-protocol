@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -S /bin/bash
 
-# Change this to the directory where you want your freesurfer outputs to be saved. Do not create the subject folders - just this parent directory. We recommend adding your FS version to your directory name, eg Freesurfer_v7.1.0 instead of just Freesurfer
+# Change fs_dir to the directory where you want your freesurfer outputs to be saved. Do not create the subject folders - just this parent directory. We recommend adding your FS version to your directory name, eg Freesurfer_v7.1.0 instead of just Freesurfer
 fs_dir=/enigma/Parent_Folder/FreeSurfer/outputs/
 mkdir -p $fs_dir
 
