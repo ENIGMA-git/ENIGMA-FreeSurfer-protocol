@@ -15,12 +15,12 @@ All scripts are in a for loop configuration and should be run from within your s
 ## Run FreeSurfer
 The main step is to run [FreeSurfer](http://surfer.nmr.mgh.harvard.edu/fswiki/recon-all)’s `recon-all` command on your T1 weighted images. Before you want to work with FreeSurfer, configure your environment in your script. All information on how to set up and install FreeSurfer can be found on [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/fswiki/QuickInstall)'s webpage. Make sure that you also [register](https://surfer.nmr.mgh.harvard.edu/registration.html) to obtain a license to use FreeSurfer.
 
-SCRIPT: `run_FreeSurfer_loop.sh`
+**SCRIPT: `run_FreeSurfer_loop.sh`**
 * _NB: this script can also be adjusted to be submitted to a computing cluster_
 
 Edit the following in your script: 
 * _line 5:_ `fs_dir` will be the output directory. Do NOT create the subject subfolders before running FreeSurfer. If FreeSurfer detects a subject folder already in your output directory, it will skip that subject. 
-* _line 9-10:_ configure the correct FreeSurfer environment. `FREESURFER_HOME` is set so your computer knows where FreeSurfer is installed, `SUBJECTS_DIR` will point to where your FreeSurfer outputs will be saved, and finally source the FreeSurfer set up script must be sourced so FreeSurfer knows the location of everything it needs,
+* _line 9-10:_ configure the correct FreeSurfer environment. `FREESURFER_HOME` is set so your computer knows where FreeSurfer is installed, `SUBJECTS_DIR` will point to where your FreeSurfer outputs will be saved, and finally source the FreeSurfer set up script must be sourced so FreeSurfer knows the location of everything it needs.
 * _line 14:_ replace `subject1 subject2 subject3` with your subject list.
 * _line 18:_ `input` should point to your T1 NIFTI images.
 
@@ -30,12 +30,10 @@ Run script:
 
 Depending on the number of your scans and the processing speed of your computer, this script will take several days to finish (24 to 36 hours/subject for versions 6 and below, and about 8-12 hours/subjects for version 7) if run in a loop. When `recon-all` is done, you will see a folder for each subject in your output-folder, in which you will find 10 new folders (such as ‘mri’, ‘stats’, ‘surf’ etc). Check to see that all your subjects ran successfully by checking to see if they have a _subject/scripts/recon-all.done_ file outputted. Here is a sample code: 
 
-```bash
-for subj in subject1 subject2 subject3;
-do
-ls /enigma/Parent_Folder/FreeSurfer/outputs/${subj}/scripts/recon-all.done
-done
-```
+      for subj in subject1 subject2 subject3;
+      do
+      ls /enigma/Parent_Folder/FreeSurfer/outputs/${subj}/scripts/recon-all.done
+      done
 
 If a subject has failed, there will (most likely) be a `recon-all.error` file in their subject's scripts subdirecoty. Check the subject's `recon-all.log` file to help with troubleshooting.   
 
