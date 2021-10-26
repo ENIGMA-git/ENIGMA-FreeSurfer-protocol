@@ -17,7 +17,7 @@ Edit the following in your script:
 *	_line 5:_ `fs_dir` to where your FreeSurfer outputs are
 *	_line 7:_ `dir` to where your CSV will be saved
 *	_line 14:_ edit the for loop so that the ls command selects the subject folder naming scheme used in your study
-*	_line 17:_ if you are using FreeSurfer version 7 and above: replace `Left-Thalamus-Proper` and `Right-Thalamus-Proper` with `Left-Thalamus` and `Right-Thalamus`, respectively.
+*	_line 17:_ if you are using FreeSurfer version 7 and above, replace Left-Thalamus-Proper and Right-Thalamus-Proper with Left-Thalamus and Right-Thalamus, respectively.
  
 Run script: 
 
