@@ -12,7 +12,7 @@ All scripts are in a for loop configuration and should be run from within your s
 * [Cortical extraction and QC](#cortical-extraction-and-qc)
 * [Subcortical extraction and QC](#subcortical-extraction-and-qc)
 
-### Run FreeSurfer
+## Run FreeSurfer
 The main step is to run [FreeSurfer](http://surfer.nmr.mgh.harvard.edu/fswiki/recon-all)’s `recon-all` command on your T1 weighted images. Before you want to work with FreeSurfer, configure your environment in your script. All information on how to set up and install FreeSurfer can be found on [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/fswiki/QuickInstall)'s webpage. Make sure that you also [register](https://surfer.nmr.mgh.harvard.edu/registration.html) to obtain a license to use FreeSurfer.
 
 SCRIPT: `run_FreeSurfer_loop.sh`
@@ -30,18 +30,20 @@ Run script:
 
 Depending on the number of your scans and the processing speed of your computer, this script will take several days to finish (24 to 36 hours/subject for versions 6 and below, and about 8-12 hours/subjects for version 7) if run in a loop. When `recon-all` is done, you will see a folder for each subject in your output-folder, in which you will find 10 new folders (such as ‘mri’, ‘stats’, ‘surf’ etc). Check to see that all your subjects ran successfully by checking to see if they have a _subject/scripts/recon-all.done_ file outputted. Here is a sample code: 
 
-        for subj in subject1 subject2 subject3;
-        do
-        ls /enigma/Parent_Folder/FreeSurfer/outputs/${subj}/scripts/recon-all.done
-        done
+```bash
+for subj in subject1 subject2 subject3;
+do
+ls /enigma/Parent_Folder/FreeSurfer/outputs/${subj}/scripts/recon-all.done
+done
+```
 
 If a subject has failed, there will (most likely) be a `recon-all.error` file in their subject's scripts subdirecoty. Check the subject's `recon-all.log` file to help with troubleshooting.   
 
-### Cortical extraction and QC
+## Cortical extraction and QC
 
 Follow the scripts and instructions in the [cortical](https://github.com/ENIGMA-git/ENIGMA-FreeSurfer-protocol/tree/main/cortical) folder.
 
-### Subcortical extraction and QC
+## Subcortical extraction and QC
 
 Follow the scripts and instructions in the [subcortical](https://github.com/ENIGMA-git/ENIGMA-FreeSurfer-protocol/tree/main/subcortical) folder.
 
