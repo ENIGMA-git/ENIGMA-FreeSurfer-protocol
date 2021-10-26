@@ -11,7 +11,7 @@ Similar to the cortical measures, we want to get the subcortical Volumes of each
 _/enigma/Parent_Folder/FreeSurfer/outputs/subject1/_
 
 SCRIPT: `extract_subcortical_FreeSurfer_measures_v2021.sh`
-NB: this is an updated script version which correctly extracts the full ICV number with %f to avoid rounding up of the values when the CSV is opened. 
+* _NB: this is an updated script version which correctly extracts the full ICV number with %f to avoid rounding up of the values when the CSV is opened._ 
 
 Edit the following in your script: 
 *	_line 5:_ `fs_dir` to where your FreeSurfer outputs are
@@ -19,7 +19,9 @@ Edit the following in your script:
 *	_line 14:_ edit the for loop so that the ls command selects the subject folder naming scheme used in your study
 *	_line 17:_ if you are using FreeSurfer version 7 and above: replace `Left-Thalamus-Proper` and `Right-Thalamus-Proper` with `Left-Thalamus` and `Right-Thalamus`, respectively.
  
-Run script: `sh extract_subcortical_FreeSurfer_measures_v2021.sh`
+Run script: 
+
+      sh extract_subcortical_FreeSurfer_measures_v2021.sh
 
 The result of this step will be one comma-separated (CSV) file (“LandRvolumes.csv”) that can be opened in your favorite spreadsheet application (i.e., Excel). It should contain a table with volumes (in mm3) of the ventricles, thalamus, caudate, putamen, pallidum, hippocampus, amygdala and accumbens and intracranial volume (ICV) for each subject. The first row is a header describing the extracted regions and names for each column. Each row after the first gives the cortical thickness average (or total surface area) measures for each subject found in your FreeSurfer directory. In the next step, you will do a QC of the segmentation quality.
 
@@ -31,7 +33,7 @@ _Note 2:_ When you edit the files in Excel, be sure to keep them in CSV format w
 First, create subcortical QC PNGs:
 
 SCRIPT: `make_subcortical_FreeSurfer_QC_png_slices.sh`
-_NB: can also be adjusted to submit in parallel jobs_
+* _NB: can also be adjusted to submit in parallel jobs_
 
 Edit the following in your script: 
 *	_line 5:_ replace `subject1 subject2 subject3` with your subject list 
@@ -40,7 +42,9 @@ Edit the following in your script:
 *	_line 21:_ `/enigma/Parent_Folder/scripts/ENIGMA_QC/` to where you saved your scripts
 *	_line 28:_ `/usr/local/matlab/bin/matlab` to your Matlab directory
 
-Run script: `sh make_subcortical_FreeSurfer_QC_png_slices.sh`
+Run script: 
+
+      sh make_subcortical_FreeSurfer_QC_png_slices.sh
  
 The func_make_subcorticalFS_ENIGMA_QC-script should take approximately 7 seconds/subject and will output a series of .png image files separated by individual subject folders.
 
@@ -48,19 +52,22 @@ Note: if you run into problems with this Matlab loop try removing the last “/�
 
 Then, create a webpage for easy viewing of the subcortical QC PNGs:
 
-SCRIPT `make_ENIGMA_QC_webpage_subcortical.sh`
+SCRIPT: `make_ENIGMA_QC_webpage_subcortical.sh`
 
 Make sure it is executable:
-`chmod 777 make_ENIGMA_QC_webpage_subcortical.sh`
+      chmod 777 make_ENIGMA_QC_webpage_subcortical.sh
 
-Run the bash script (while in your /scripts/ENIGMA_QC/ folder) by giving the script the full path to the directory where you stored the subcortical QC output files:
-./make_ENIGMA_QC_webpage_subcortical.sh /enigma/Parent_Folder/FreeSurfer/QC_subcortical/
+Run the bash script (while in your /scripts/ENIGMA_QC/ folder) by giving the script the full path to the directory where you stored the subcortical QC output files: 
 
-_Note 1:_ If you have trouble running this script, it’s possible that you need to fix the line endings in the script before running. You can do this by running this command: sed -i -e 's/\r$//' make_ENIGMA_QC_webpage_subcortical.sh
+      ./make_ENIGMA_QC_webpage_subcortical.sh /enigma/Parent_Folder/FreeSurfer/QC_subcortical/
 
-_Note 2:_ The script will create multiple webpages (e.g. ‘ENIGMA_Amyg_volume_QC.html’, ENIGMA_Subcortical_QC.html’) in the same folder as your QC output. If you want to check the segmentation on another computer, you can just copy over the whole QC-folder to your computer and open the webpage from there. To open one of these webpages in a browser of your choice in a Linux environment. For example:
+_Note 1:_ If you have trouble running this script, it’s possible that you need to fix the line endings in the script before running. You can do this by running this command: 
 
-firefox ENIGMA_Subcortical_QC.html
+      sed -i -e 's/\r$//' make_ENIGMA_QC_webpage_subcortical.sh
+
+_Note 2:_ The script will create multiple webpages (e.g. ‘ENIGMA_Amyg_volume_QC.html’, ENIGMA_Subcortical_QC.html’) in the same folder as your QC output. If you want to check the segmentation on another computer, you can just copy over the whole QC-folder to your computer and open the webpage from there. To open one of these webpages in a browser of your choice in a Linux environment. For example: 
+
+      firefox ENIGMA_Subcortical_QC.html
 
 ### 3. Visually QC Subcortical Structures
 
@@ -85,7 +92,8 @@ You do not need to edit this script which will call on the LandRvolumes.csv whic
 Make sure that the columns are in the same order as in the file above. Also, note that the “x” is the marker that should be used to mark files as poorly segmented or excluded (see step 8). Also, you need to make sure that there are no missing values in the file. In the LandRvolumes.csv file missing values will appear as two commas in a row “,,”. Missing values are probably easier to see in a spreadsheet program like Microsoft Excel, there it will just be a blank cell. You need to put an “x” value for any missing value so that it will be excluded from the analysis. 
 
 Run the R script from inside /enigma/Parent_Folder/FreeSurfer/measures/to generate the plots:
-`R --no-save --slave < /enigma/Parent_Folder/scripts/histogram_plots_subcortical.R`
+
+      R --no-save --slave < /enigma/Parent_Folder/scripts/histogram_plots_subcortical.R
 
 It should only take a few minutes to generate all of the plots. If you get errors, they should tell you what things need to be changed in the file in order to work properly. Just make sure that your input file is in .csv format similar to the file above.
 
@@ -98,7 +106,8 @@ Now we will run a semi-automated script to detect outliers, which is based on th
 SCRIPT: `mkIQIrange_subcortical.sh`
 
 Move the script from your scripts folder, save and run inside /enigma/Parent_Folder/FreeSurfer/measures/:
-`./ mkIQIrange_subcortical.sh > subcortical_jnk.txt`
+
+      ./ mkIQIrange_subcortical.sh > subcortical_jnk.txt
 
 Then run the following code from the save folder:
 
