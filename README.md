@@ -39,10 +39,10 @@ If a subject has failed, there will (most likely) be a `recon-all.error` file in
 
 ### Cortical extraction and QC
 
-Follow the scripts and instructions in the [cortical](https://github.com/ENIGMA-git/ENIGMA-FreeSurfer-extraction-and-QC/tree/main/cortical) branch.
+Follow the scripts and instructions in the [cortical](https://github.com/ENIGMA-git/ENIGMA-FreeSurfer-protocol/tree/main/cortical) folder.
 
 ### Subcortical extraction and QC
 
-Follow the scripts and instructions in the [subcortical](https://github.com/ENIGMA-git/ENIGMA-FreeSurfer-extraction-and-QC/tree/main/subcortical) branch.
+Follow the scripts and instructions in the [subcortical](https://github.com/ENIGMA-git/ENIGMA-FreeSurfer-protocol/tree/main/subcortical) folder.
 
 
