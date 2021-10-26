@@ -4,7 +4,7 @@
   * [I. The Internal Surface Method](#i.-the-internal-surface-method)
   * [II. The External Surface Method](#ii.-the-external-surface-method)
 * [3. Visual QC Cortical Structures](#3.-visual-qc-cortical-structures)
-* [4. Outlier Detection of Cortical Measures](#4.-outlier-detection-of-cortical-measures)
+* [Outlier Detection of Cortical Measures](outlier-detection-of-cortical-measures)
 
 ### 1. Extract Cortical Measures
 
@@ -142,7 +142,7 @@ Sample code:
       ${SUBJECT}/surf/rh.pial:annot=aparc.annot:name=pial_aparc:visible=0 \
       --viewport 3d 
 
-### 4. Outlier Detection of Cortical Measures
+### Outlier Detection of Cortical Measures
 
 This is a simple R script that will identify subjects with cortical thickness and surface area values that deviate from the rest of your subjects.
 
