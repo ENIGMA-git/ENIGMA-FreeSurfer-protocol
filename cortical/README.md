@@ -34,7 +34,7 @@ _Note 2:_ When you edit the files in Excel, be sure to keep them in CSV format w
 There are two steps for visually quality checking the cortical segmentations outputted from FreeSurfer:
 
 #### I. The Internal Surface Method:
-This method uses a Matlab function to plot cortical surface segmentations directly on a subject’s scan and collates snapshots from internal slices of the brain into a webpage for easy checking.
+This method uses a Matlab function to plot cortical surface segmentations directly on a subject’s scan and collates snapshots from internal slices of the brain into a webpage for easy checking. First create the QC PNGs.
 
 SCRIPT: `make_cortical_FreeSurfer_internal_QC_png_slices.sh`
 * _NB: can also be adjusted to submit in parallel jobs_
@@ -66,7 +66,7 @@ Run script by giving the script the full path to the directory where you stored 
 
       ./make_ENIGMA_QC_cortical_internal_webpage.sh /enigma/Parent_Folder/FreeSurfer/QC_cortical_internal/
 
-This script will create a webpage called ENIGMA_Cortical_QC.html in the same folder as your QC output. You can open the ENIGMA_Cortical_QC.html file in any browser, just make sure all of the .png files are in the same folder if you decide to move the ENIGMA_Cortical_QC.html file to a different location (like a local computer). Zoom in and out of the window to adjust the size of the images, or you can click on a subject’s file to see a larger version. To open the webpage in a browser in a Linux environment you can probably just type the following from the /QC_cortical_internal/ folder:
+This script will create a webpage called `ENIGMA_Cortical_QC.html` in the same folder as your QC output. You can open the ENIGMA_Cortical_QC.html file in any browser, just make sure all of the .png files are in the same folder if you decide to move the `ENIGMA_Cortical_QC.html` file to a different location (like a local computer). Zoom in and out of the window to adjust the size of the images per row, or you can click on a subject’s file to see a larger version. To open the webpage in a browser in a Linux environment you can probably just type the following from the _/QC_cortical_internal/_ folder:
 
       firefox ENIGMA_Cortical_QC.html
 
@@ -106,7 +106,7 @@ Run the bash script (while in your scripts folder) by giving the script the full
 
       sh ./make_ENIGMA_QC_cortical_external_webpage_v2021.sh /enigma/Parent_Folder/Freesurfer/QC_cortical_external/
 
-This script will create a webpage called QC_external.html in the same folder as your QC outputs. You can open the QC_external.html file in any browser, just make sure all of the .png files are in the same folder if you decide to move the QC_external.html file to a different location (like a local computer). Zoom in and out of the window to adjust the size of the images, or you can click on a subject’s file to see a larger version. To open the webpage in a browser in a Linux environment you can probably just type the following from the /QC_cortical_external/ folder:
+This script will create a webpage called `QC_external.html` in the same folder as your QC outputs. You can open the QC_external.html file in any browser, just make sure all of the .png files are in the same folder if you decide to move the `QC_external.html` file to a different location (like a local computer). Zoom in and out of the window to adjust the size of the images, or you can click on a subject’s file to see a larger version. To open the webpage in a browser in a Linux environment you can probably just type the following from the _/QC_cortical_external/_ folder:
 
       firefox QC_external.html
 
