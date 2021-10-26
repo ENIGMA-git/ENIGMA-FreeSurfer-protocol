@@ -8,11 +8,11 @@ In all template scripts, we assume the following main path set-up which you will
 All scripts are in a for loop configuration and should be run from within your scripts folder; if you have a computing system which allows you to parallelize jobs, we highlight where you could edit the script in order to run through your subjects faster. 
 
 #### Overview:
-* [FreeSurfer](#freesurfer)
+* [Run FreeSurfer](#run-freesurfer)
 * [Cortical extraction and QC](#cortical-extraction-and-qc)
 * [Subcortical extraction and QC](#subcortical-extraction-and-qc)
 
-### FreeSurfer
+### Run FreeSurfer
 The main step is to run [FreeSurfer](http://surfer.nmr.mgh.harvard.edu/fswiki/recon-all)’s `recon-all` command on your T1 weighted images. Before you want to work with FreeSurfer, configure your environment in your script. All information on how to set up and install FreeSurfer can be found on [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/fswiki/QuickInstall)'s webpage. Make sure that you also [register](https://surfer.nmr.mgh.harvard.edu/registration.html) to obtain a license to use FreeSurfer.
 
 SCRIPT: `run_FreeSurfer_loop.sh`
