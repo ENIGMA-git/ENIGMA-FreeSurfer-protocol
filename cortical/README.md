@@ -11,17 +11,17 @@
 First, we want to get each subject's cortical Surface Area and Thickness Average of each region of interst (ROI) after running FreeSurfer. In this first step, extract and organize each of the values for each FreeSurfer ROI. The script assumes that your FreeSurfer output are organized in a standard way:
 _/enigma/Parent_Folder/FreeSurfer/outputs/subject1/_
 
-**SCRIPT: `01_extract_cortical_FreeSurfer_measures_v2021.sh`** 
-* _NB: This is an updated script version which correctly extracts the full intracranial volume (ICV) value using %f to avoid rounding up of the values when the CSV is opened and edited._
+**SCRIPT: `01_extract_cortical_FreeSurfer_measures.sh`** 
+* _NB: This is an updated script version from April 2021 which correctly extracts the full intracranial volume (ICV) value using %f to avoid rounding up of the values when the CSV is opened and edited._
 
 Edit the following in your script: 
-*	_line 5:_ `fs_dir` to where your FreeSurfer outputs are.
-*	_line 7:_ `dir` to where your CSV’s will be saved.
-*	_line 16:_ edit the for loop so that the `ls` command selects the subject folder naming scheme used in your study.
+*	_line 7:_ `fs_dir` to where your FreeSurfer outputs are.
+*	_line 9:_ `dir` to where your CSV’s will be saved.
+*	_line 18:_ edit the for loop so that the `ls` command selects the subject folder naming scheme used in your study.
  
 Run script:    
 
-      sh 01_extract_cortical_FreeSurfer_measures_v2021.sh
+      sh 01_extract_cortical_FreeSurfer_measures.sh
 
 The result of this step will be two comma-separated (CSV) files (“CorticalMeasuresENIGMA_ThickAvg.csv” and “CorticalMeasuresENIGMA_SurfAvg.csv”) that can be opened in your favorite spreadsheet application (i.e. Excel). The first row is a header describing the extracted regions and names for each column. Each row after the first gives the cortical thickness average (or total surface area) measures for each subject found in your FreeSurfer directory. In the next step, you will do a QC of the segmentation quality.
 
@@ -77,10 +77,10 @@ _Note 1:_ If you have trouble running this script, it’s possible that you need
 _Note 2:_ You can use the legend.jpg file found in the _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ folder as a colored coded reference of each FreeSurfer ROI (split by left/right). 
 
 ### The External Surface Method:
-This method uses a Matlab function to plot cortical surface segmentations from different angles. These are updated scripts that will extract the cortical external view PNGs needed for QC in a faster way that does not rely on `tksurfer`. Instead, this script uses a Matlab function (`FS_external_QC.m`) found in the `ENIGMA_QC_3.0.zip` file. First, create the PNGs:
+This method has been updated in April 2021 and uses a Matlab function to plot cortical surface segmentations from different angles. These are updated scripts that will extract the cortical external view PNGs needed for QC in a faster way that does not rely on `tksurfer`. Instead, this script uses a Matlab function (`FS_external_QC.m`) found in the `ENIGMA_QC_3.0.zip` file. First, create the PNGs:
 
-**SCRIPT: `03_make_cortical_FreeSurfer_external_QC_png_v2021.sh`**
-* _NB: this script can also be adjusted to be submitted to a computing cluster_
+**SCRIPT: `03_make_cortical_FreeSurfer_external_QC_png.sh`**
+* _NB: This script can also be adjusted to be submitted to a computing cluster_
 
 Edit the following in your script: 
 *	_line 10:_ `fs_dir` to where your FreeSurfer outputs are.
@@ -92,9 +92,9 @@ Edit the following in your script:
 
 Run script: 
 
-      sh 03_make_cortical_FreeSurfer_external_QC_png_v2021.sh
+      sh 03_make_cortical_FreeSurfer_external_QC_png.sh
 
-Then, create a webpage for easy viewing of the external QC PNGs. This script is found in your _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ directory.
+Then, create a webpage for easy viewing of the external QC PNGs using the updated script from April 2021. This script is found in your _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ directory.
 
 **SCRIPT: `make_ENIGMA_QC_cortical_external_webpage_v2021.sh`**
 
