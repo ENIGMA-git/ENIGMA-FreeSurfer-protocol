@@ -11,7 +11,7 @@
 First, we want to get each subject's cortical Surface Area and Thickness Average of each region of interst (ROI) after running FreeSurfer. In this first step, extract and organize each of the values for each FreeSurfer ROI. The script assumes that your FreeSurfer output are organized in a standard way:
 _/enigma/Parent_Folder/FreeSurfer/outputs/subject1/_
 
-**SCRIPT: `extract_cortical_measures_v2021.sh`** 
+**SCRIPT: `01_extract_cortical_FreeSurfer_measures_v2021.sh`** 
 * _NB: This is an updated script version which correctly extracts the full intracranial volume (ICV) value using %f to avoid rounding up of the values when the CSV is opened and edited._
 
 Edit the following in your script: 
@@ -21,7 +21,7 @@ Edit the following in your script:
  
 Run script:    
 
-      sh extract_cortical_FreeSurfer_measures_v2021.sh
+      sh 01_extract_cortical_FreeSurfer_measures_v2021.sh
 
 The result of this step will be two comma-separated (CSV) files (“CorticalMeasuresENIGMA_ThickAvg.csv” and “CorticalMeasuresENIGMA_SurfAvg.csv”) that can be opened in your favorite spreadsheet application (i.e. Excel). The first row is a header describing the extracted regions and names for each column. Each row after the first gives the cortical thickness average (or total surface area) measures for each subject found in your FreeSurfer directory. In the next step, you will do a QC of the segmentation quality.
 
@@ -36,7 +36,7 @@ There are two steps for visually quality checking the cortical segmentations out
 ### The Internal Surface Method:
 This method uses a Matlab function to plot cortical surface segmentations directly on a subject’s scan and collates snapshots from internal slices of the brain into a webpage for easy checking. First create the QC PNGs:
 
-**SCRIPT: `make_cortical_FreeSurfer_internal_QC_png_slices.sh`**
+**SCRIPT: `02_make_cortical_FreeSurfer_internal_QC_png_slices.sh`**
 * _NB: this script can also be adjusted to be submitted to a computing cluster_
 
 Edit the following in your script: 
@@ -44,11 +44,11 @@ Edit the following in your script:
 * _line 10:_ `fs_dir` to where your FreeSurfer outputs are.
 * _line 12:_ `qc_dir` to where your internal view QC outputs will be saved.
 * _line 21:_ _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ to where you saved your Matlab scripts from the `ENIGMA_QC_3.0.zip` file, as this script will call on the `func_make_corticalpngs_ENIGMA_QC.m` function and its dependencies.
-* _line 28:_ `/usr/local/matlab/bin/matlab` to your Matlab directory.
+* _line 30:_ `/usr/local/matlab/bin/matlab` should point to your Matlab directory.
 
 Run script: 
 
-      sh make_cortical_FreeSurfer_internal_QC_png_slices.sh
+      sh 02_make_cortical_FreeSurfer_internal_QC_png_slices.sh
  
 _Note 1:_ The `func_make_corticalpngs_ENIGMA_QC.m` function should take approximately 7 seconds/subject and will output a series of .png image files separated by individual subject folders.
 
@@ -58,7 +58,7 @@ Then, create a webpage for easy viewing of the internal QC PNGs:
 
 **SCRIPT: `make_ENIGMA_QC_cortical_internal_webpage.sh`**
 
-There is no need to edit this script, but first make sure it is executable: 
+This script is found in your _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ directory. There is no need to edit this script, but first make sure it is executable: 
 
       chmod 777 make_ENIGMA_QC_cortical_internal_webpage.sh
 
@@ -79,22 +79,22 @@ _Note 2:_ You can use the legend.jpg file found in the _/enigma/Parent_Folder/sc
 ### The External Surface Method:
 This method uses a Matlab function to plot cortical surface segmentations from different angles. These are updated scripts that will extract the cortical external view PNGs needed for QC in a faster way that does not rely on `tksurfer`. Instead, this script uses a Matlab function (`FS_external_QC.m`) found in the `ENIGMA_QC_3.0.zip` file. First, create the PNGs:
 
-**SCRIPT: `make_cortical_FreeSurfer_external_QC_png_v2021.sh`**
+**SCRIPT: `03_make_cortical_FreeSurfer_external_QC_png_v2021.sh`**
 * _NB: this script can also be adjusted to be submitted to a computing cluster_
 
 Edit the following in your script: 
-*	_line 7:_ `fs_dir` to where your FreeSurfer outputs are.
-*	_line 9:_ `qc_dir` to where your external view QC outputs will be saved.
-*	_line 13:_ _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ to where you saved your Matlab scripts from the `ENIGMA _QC_3.0.zip` file, as this script will call on `FS_external_QC.m` and its dependencies.
-*	_line 16:_ replace `subject1 subject2 subject3` with your subject list. 
-*	_line 19:_ your Matlab directory `/usr/local/matlab/bin/matlab`.
+*	_line 10:_ `fs_dir` to where your FreeSurfer outputs are.
+*	_line 12:_ `qc_dir` to where your external view QC outputs will be saved.
+*	_line 16:_ _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ to where you saved your Matlab scripts from the `ENIGMA _QC_3.0.zip` file, as this script will call on `FS_external_QC.m` and its dependencies.
+*	_line 19:_ replace `subject1 subject2 subject3` with your subject list. 
+*	_line 22:_ `/usr/local/matlab/bin/matlab` should point to your Matlab directory.
 * You will also need to edit the `FS_external_QC.m` Matlab function file in your text editor (_line 6_ `addpath(genpath('/enigma/Parent_Folder/scripts/ENIGMA_QC/'));`) to lead to your scripts folder. 
 
 Run script: 
 
-      sh make_cortical_FreeSurfer_external_QC_png_v2021.sh
+      sh 03_make_cortical_FreeSurfer_external_QC_png_v2021.sh
 
-Then, create a webpage for easy viewing of the external QC PNGs:
+Then, create a webpage for easy viewing of the external QC PNGs. This script is found in your _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ directory.
 
 **SCRIPT: `make_ENIGMA_QC_cortical_external_webpage_v2021.sh`**
 
@@ -133,14 +133,14 @@ III.	Merge the extracted measures with your QC ratings: jupyter notebook coming 
 
 This is a simple R script that will identify subjects with cortical thickness and surface area values that deviate from the rest of your subjects.
 
-**SCRIPT: `outliers_cortical.R`**
+**SCRIPT: `04_outliers_cortical.R`**
 
 Edit the following in your script: 
 *	_line 5 and 37:_ directories to the resepctive location of your CorticalMeasuresENIGMA_ThickAvg.csv and CorticalMeasuresENIGMA_SurfAvg.csv generated in the previous step. 
 
 Run the script in your terminal or R window: 
 
-      R --no-save --slave < outliers_cortical.R > /enigma/Parent_Folder/FreeSurfer/measures/outliers_cortical.log
+      R --no-save --slave < 04_outliers_cortical.R > /enigma/Parent_Folder/FreeSurfer/measures/outliers_cortical.log
 
 This will generate a log file that will tell you which subjects are outliers and for which structures they are outliers for. Make sure you look at these subjects closely as you proceed with the quality check protocol to make sure they are segmented properly. 
 
