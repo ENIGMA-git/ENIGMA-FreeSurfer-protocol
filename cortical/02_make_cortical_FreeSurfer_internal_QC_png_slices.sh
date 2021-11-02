@@ -25,6 +25,7 @@ if [ -f ${imageF} ]
 then
 
 matlabcall="func_make_corticalpngs_ENIGMA_QC('${qc_dir}','${b}','${imageF}','${overlay}')"
+# Point to where your matlab is saved
 /usr/local/matlab/bin/matlab -nodisplay -nosplash -singleCompThread -r "${matlabcall};quit"
 echo 'Done with subject: ' ${subj}
 
