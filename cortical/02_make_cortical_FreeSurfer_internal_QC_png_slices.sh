@@ -30,8 +30,7 @@ matlabcall="func_make_corticalpngs_ENIGMA_QC('${qc_dir}','${b}','${imageF}','${o
 echo 'Done with subject: ' ${subj}
 
 else
-echo 'Freesurfer files not found'
-
+echo 'Freesurfer files not found for subject: ' ${subj}
 fi
 
 done
