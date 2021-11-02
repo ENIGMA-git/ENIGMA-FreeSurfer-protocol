@@ -9,18 +9,18 @@
 
 Similar to with the cortical measures, we want to extract the subcortical Volumes of each ROI from each subject from FreeSurfer. This script will extract and organize each of the values for each FreeSurfer ROI. The script assumes that your FreeSurfer output are organized in a standard way: _/enigma/Parent_Folder/FreeSurfer/outputs/subject1/_
 
-**SCRIPT: `01_extract_subcortical_FreeSurfer_measures_v2021.sh`**
-* _NB: this is an updated script version which correctly extracts the full ICV number with %f to avoid rounding up of the values when the CSV is opened._ 
+**SCRIPT: `01_extract_subcortical_FreeSurfer_measures.sh`**
+* _NB: This is an updated script version from April 2021 which correctly extracts the full intracranial volume (ICV) value using %f to avoid rounding up of the values when the CSV is opened and edited._ 
 
 Edit the following in your script: 
-*	_line 5:_ `fs_dir` to where your FreeSurfer outputs are
-*	_line 7:_ `dir` to where your CSV will be saved
-*	_line 14:_ edit the for loop so that the `ls` command selects the subject folder naming scheme used in your study
-*	_line 17:_ if you are using FreeSurfer version 7 and above, replace Left-Thalamus-Proper and Right-Thalamus-Proper with Left-Thalamus and Right-Thalamus, respectively.
+*	_line 7:_ `fs_dir` to where your FreeSurfer outputs are
+*	_line 9:_ `dir` to where your CSV will be saved
+*	_line 16:_ edit the for loop so that the `ls` command selects the subject folder naming scheme used in your study
+*	_line 19:_ if you are using FreeSurfer version 7 and above, replace Left-Thalamus-Proper and Right-Thalamus-Proper with Left-Thalamus and Right-Thalamus, respectively.
  
 Run script: 
 
-      sh 01_extract_subcortical_FreeSurfer_measures_v2021.sh
+      sh 01_extract_subcortical_FreeSurfer_measures.sh
 
 The result of this step will be one comma-separated (CSV) file (“LandRvolumes.csv”) that can be opened in your favorite spreadsheet application (i.e., Excel). It should contain a table with volumes (in mm3) of the ventricles, thalamus, caudate, putamen, pallidum, hippocampus, amygdala and accumbens and intracranial volume (ICV) for each subject. The first row is a header describing the extracted regions and names for each column. Each row after the first gives the cortical thickness average (or total surface area) measures for each subject found in your FreeSurfer directory. In the next step, you will do a QC of the segmentation quality.
 
@@ -33,7 +33,7 @@ _Note 2:_ When you edit the files in Excel, be sure to keep them in CSV format w
 First, create subcortical QC PNGs:
 
 **SCRIPT: `02_make_subcortical_FreeSurfer_QC_png_slices.sh`**
-* _NB: can also be adjusted to submit in parallel jobs_
+* _NB: This script can also be adjusted to submit in parallel jobs_
 
 Edit the following in your script: 
 *	_line 5:_ replace `subject1 subject2 subject3` with your subject list.
@@ -48,7 +48,7 @@ Run script:
  
 The `func_make_subcorticalFS_ENIGMA_QC` function should take approximately 7 seconds/subject and will output a series of .png image files separated by individual subject folders.
 
-_Note:_ if you run into problems with this Matlab loop try removing the last “/” in the qc_dir variable. So, `qc_dir=/enigma/Parent_Folder/FreeSurfer/QC_subcortical/` would become `qc_dir=/enigma/Parent_Folder/FreeSurfer/QC_subcortical`
+_Note:_ If you run into problems with this Matlab loop try removing the last “/” in the qc_dir variable. So, `qc_dir=/enigma/Parent_Folder/FreeSurfer/QC_subcortical/` would become `qc_dir=/enigma/Parent_Folder/FreeSurfer/QC_subcortical`
 
 Then, create a webpage for easy viewing of the subcortical QC PNGs:
 
