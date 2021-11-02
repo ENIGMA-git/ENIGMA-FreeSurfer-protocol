@@ -1,6 +1,8 @@
 #!/bin/bash
 #$ -S /bin/bash
 
+## Updated October 2021 - enigma.ini.usc.edu
+
 # Input directory, i.e. Freeurfer outputs
 fs_dir=/enigma/Parent_Folder/FreeSurfer/outputs/
 # Output directory, i.e. where your csv's will be saved
