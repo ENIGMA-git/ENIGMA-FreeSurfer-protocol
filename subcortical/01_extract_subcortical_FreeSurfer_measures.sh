@@ -1,6 +1,8 @@
 #!/bin/bash
 #$ -S /bin/bash
 
+## Updated October 2021 - enigma.ini.usc.edu
+
 # Input directory, i.e. Freeurfer outputs
 fs_dir=/enigma/Parent_Folder/FreeSurfer/outputs/
 # Output directory, i.e. where your csv's will be saved
@@ -21,4 +23,4 @@ printf "%f" `cat ${subj_id}/stats/aseg.stats | grep IntraCranialVol | awk -F, '{
 echo "" >> ${dir}LandRvolumes.csv
 done
 
-# NB: if you are using FreeSurfer v7 and above, replace Left-Thalamus-Proper and Right-Thalamus-Proper with Left-Thalamus and Right-Thalamus, respectively.
+# NB: If you are using FreeSurfer v7 and above, replace Left-Thalamus-Proper and Right-Thalamus-Proper with Left-Thalamus and Right-Thalamus, respectively.
