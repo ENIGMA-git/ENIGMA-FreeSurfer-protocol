@@ -37,7 +37,7 @@ There are two steps for visually quality checking the cortical segmentations out
 This method uses a Matlab function to plot cortical surface segmentations directly on a subject’s scan and collates snapshots from internal slices of the brain into a webpage for easy checking. First create the QC PNGs:
 
 **SCRIPT: `02_make_cortical_FreeSurfer_internal_QC_png_slices.sh`**
-* _NB: this script can also be adjusted to be submitted to a computing cluster_
+* _NB: This script can also be adjusted to be submitted to a computing cluster_
 
 Edit the following in your script: 
 * _line 5:_ replace `subject1 subject2 subject3` with your subject list.
