@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -S /bin/bash
 
-# Where your FreeSurfer outputs are saved
+# Input directory, i.e. Freeurfer outputs
 fs_dir=/enigma/Parent_Folder/FreeSurfer/outputs/
-# Where your csv will be saved
+# Output directory, i.e. where your csv's will be saved
 dir=/enigma/Parent_Folder/FreeSurfer/measures/
 
 mkdir $dir
