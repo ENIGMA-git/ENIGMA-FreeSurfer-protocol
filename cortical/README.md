@@ -62,11 +62,11 @@ This script is found in your _/enigma/Parent_Folder/scripts/ENIGMA_QC/_ director
 
       chmod 777 make_ENIGMA_QC_cortical_internal_webpage.sh
 
-Run script by giving the script the full path to the directory where you stored the Matlab QC output files:
+Run the bash script (while in your _/scripts/ENIGMA_QC/_ folder) by giving the script the full path to the directory where you stored the subcortical QC output PNG files: 
 
       ./make_ENIGMA_QC_cortical_internal_webpage.sh /enigma/Parent_Folder/FreeSurfer/QC_cortical_internal/
 
-This script will create a webpage called `ENIGMA_Cortical_QC.html` in the same folder as your QC outputs. You can open the `ENIGMA_Cortical_QC.html` file in any browser, just make sure all of the .png files are in the same folder if you decide to move the `ENIGMA_Cortical_QC.html` file to a different location (like a local computer). Zoom in and out of the window to adjust the size of the images per row, or click on a subject’s file to see a larger version. To open the webpage in a browser in a Linux environment you can probably just type the following from the _/QC_cortical_internal/_ folder:
+This script will create a webpage called "ENIGMA_Cortical_QC.html" in the same folder as your QC outputs. You can open the html file in any browser, just make sure all of the .png files are in the same folder if you decide to move the "ENIGMA_Cortical_QC.html" file to a different location (like a local computer). Zoom in and out of the window to adjust the size of the images per row, or click on a subject’s file to see a larger version. To open the webpage in a browser in a Linux environment you can probably just type the following from the _/QC_cortical_internal/_ folder:
 
       firefox ENIGMA_Cortical_QC.html
 
@@ -105,7 +105,7 @@ Run the bash script by giving the script the full path to the directory where yo
 
       sh ./make_ENIGMA_QC_cortical_external_webpage_v2021.sh /enigma/Parent_Folder/Freesurfer/QC_cortical_external/
 
-This script will create a webpage called `QC_external.html` in the same folder as your QC outputs. You can open the `QC_external.html` file in any browser, just make sure all of the .png files are in the same folder if you decide to move the `QC_external.html` file to a different location (like a local computer). Zoom in and out of the window to adjust the size of the images, or click on a subject’s file to see a larger version. To open the webpage in a browser in a Linux environment you can probably just type the following from the _/QC_cortical_external/_ folder:
+This script will create a webpage called "QC_external.html" in the same folder as your QC outputs. You can open the html file in any browser, just make sure all of the .png files are in the same folder if you decide to move the "QC_external.html" file to a different location (like a local computer). Zoom in and out of the window to adjust the size of the images, or click on a subject’s file to see a larger version. To open the webpage in a browser in a Linux environment you can probably just type the following from the _/QC_cortical_external/_ folder:
 
       firefox QC_external.html
 
