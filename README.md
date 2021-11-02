@@ -16,7 +16,7 @@ All scripts are in a for loop configuration and should be run from within your s
 The main step is to run [FreeSurfer](http://surfer.nmr.mgh.harvard.edu/fswiki/recon-all)’s `recon-all` command on your T1 weighted images. Before you want to work with FreeSurfer, configure your environment in your script. All information on how to set up and install FreeSurfer can be found on [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/fswiki/QuickInstall)'s webpage. Make sure that you also [register](https://surfer.nmr.mgh.harvard.edu/registration.html) to obtain a license to use FreeSurfer.
 
 **SCRIPT: `run_FreeSurfer_loop.sh`**
-* _NB: this script can also be adjusted to be submitted to a computing cluster_
+* _NB: This script can also be adjusted to be submitted to a computing cluster_
 
 Edit the following in your script: 
 * _line 5:_ `fs_dir` will be the output directory. Do NOT create the subject subfolders before running FreeSurfer. If FreeSurfer detects a subject folder already in your output directory, it will skip that subject. 
