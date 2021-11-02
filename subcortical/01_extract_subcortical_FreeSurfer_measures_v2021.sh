@@ -1,12 +1,12 @@
 #!/bin/bash
 #$ -S /bin/bash
 
-# Where your FreeSurfer outputs are saved
+# Input directory, i.e. Freeurfer outputs
 fs_dir=/enigma/Parent_Folder/FreeSurfer/outputs/
-# Where your csv will be saved
+# Output directory, i.e. where your csv's will be saved
 dir=/enigma/Parent_Folder/FreeSurfer/measures/
 
-mkdir ${fs_dir}
+mkdir -p ${dir}
 
 cd ${fs_dir} 
 echo "SubjID,LLatVent,RLatVent,Lthal,Rthal,Lcaud,Rcaud,Lput,Rput,Lpal,Rpal,Lhippo,Rhippo,Lamyg,Ramyg,Laccumb,Raccumb,ICV" > ${dir}LandRvolumes.csv
