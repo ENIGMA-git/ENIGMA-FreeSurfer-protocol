@@ -15,8 +15,8 @@ Mandatory arguments:
 	--subjects	Provide a list of subjects stored in a text file
 	--fsdir		FreeSurfer output path; absolute path
 	--outdir	Output directory
-	--script	Absolute path to ENIGMA dependency scripts
-	--matlab	Matlab path
+	--script	Absolute path to ENIGMA dependency compiled scripts
+	--mcrdir	MATLAB Runtime Path
 	--fs		Freesurfer v7 and above (e.g. --fs true or false)
 
 N.B. --step_(1:5) choose at least one of these steps 
@@ -60,8 +60,8 @@ case $key in
         shift 
         shift 
         ;;
-	--matlab)
-        matlab_dir=${2}
+	--mcrdir)
+        MCRROOT=${2}
         shift 
         shift 
         ;;
@@ -192,9 +192,7 @@ if [[ "${step_val_3}" = true ]]; then
 	qc_dir_subcort=${out_dir}/qc/subcortical && mkdir -p ${qc_dir_subcort}
 
 	for subj_id in `cat $subjectIDs`; do
-		# matlabcall="addpath(genpath('${scripts_dir}')); func_make_subcorticalFS_ENIGMA_QC('${qc_dir_subcort}','${subj_id}','${fs_dir}/${subj_id}/mri/orig_nu.mgz','${fs_dir}/${subj_id}/mri/aparc+aseg.mgz')"
-		# ${matlab_dir} -nodisplay -batch "${matlabcall};exit;"
-		sh ${scripts_dir}/run_func_make_subcorticalFS_ENIGMA_QC.sh /usr/local/MATLAB/R2019b ${qc_dir_subcort} ${subj_id} ${fs_dir}/${subj_id}/mri/orig_nu.mgz ${fs_dir}/${subj_id}/mri/aparc+aseg.mgz
+		sh ${scripts_dir}/run_func_make_subcorticalFS_ENIGMA_QC.sh ${MCRROOT} ${qc_dir_subcort} ${subj_id} ${fs_dir}/${subj_id}/mri/orig_nu.mgz ${fs_dir}/${subj_id}/mri/aparc+aseg.mgz
 		echo 'Done with subject: ' ${subj_id}
 	done
 
@@ -288,9 +286,7 @@ if [[ "${step_val_4}" = true ]]; then
 	qc_dir_cort_int=${out_dir}/qc/cortical_internal && mkdir -p ${qc_dir_cort_int}
 
 	for subj_id in `cat $subjectIDs`; do
-		# matlabcall="addpath(genpath('${scripts_dir}')); func_make_corticalpngs_ENIGMA_QC('${qc_dir_cort_int}','${subj_id}','${fs_dir}/${subj_id}/mri/orig_nu.mgz','${fs_dir}/${subj_id}/mri/aparc+aseg.mgz')"
-		# ${matlab_dir} -nodisplay -batch "${matlabcall};exit;"
-		sh ${scripts_dir}/run_func_make_corticalpngs_ENIGMA_QC.sh /usr/local/MATLAB/R2019b ${qc_dir_cort_int} ${subj_id} ${fs_dir}/${subj_id}/mri/orig_nu.mgz ${fs_dir}/${subj_id}/mri/aparc+aseg.mgz
+		sh ${scripts_dir}/run_func_make_corticalpngs_ENIGMA_QC.sh ${MCRROOT} ${qc_dir_cort_int} ${subj_id} ${fs_dir}/${subj_id}/mri/orig_nu.mgz ${fs_dir}/${subj_id}/mri/aparc+aseg.mgz
 		echo 'Done with subject: ' ${subj_id}
 	done
 	
@@ -358,9 +354,7 @@ if [[ "${step_val_5}" = true ]]; then
 	qc_dir_cort_ext=${out_dir}/qc/cortical_external && mkdir -p ${qc_dir_cort_ext}
 
 	for subj_id in `cat $subjectIDs`; do
-		# matlabcall="addpath(genpath('${scripts_dir}')); FS_external_QC('${fs_dir}', '${qc_dir_cort_ext}', '${subj_id}')"
-		# ${matlab_dir} -nodisplay -batch "${matlabcall};exit;"
-		sh ${scripts_dir}/run_FS_external_QC.sh /usr/local/MATLAB/R2019b ${fs_dir} ${qc_dir_cort_ext} ${subj_id}
+		sh ${scripts_dir}/run_FS_external_QC.sh ${MCRROOT} ${fs_dir} ${qc_dir_cort_ext} ${subj_id}
 		echo 'Done with subject: ' ${subj_id}
 	done
 
