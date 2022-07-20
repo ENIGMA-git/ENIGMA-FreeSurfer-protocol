@@ -17,7 +17,7 @@ Mandatory arguments:
 	--outdir	Output directory
 	--script	Absolute path to ENIGMA dependency compiled scripts
 	--mcrdir	MATLAB Runtime Path
-	--fs		Freesurfer v7 and above (e.g. --fs true or false)
+	--fs7		Freesurfer v7 and above (e.g. --fs true or false)
 
 N.B. --step_(1:5) choose at least one of these steps 
 
@@ -70,7 +70,7 @@ case $key in
         shift 
         shift 
         ;;
-	--fs)
+	--fs7)
         fs_version=${2}
         shift 
         shift 
