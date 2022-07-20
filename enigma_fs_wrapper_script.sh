@@ -23,11 +23,11 @@ N.B. --step_(1:5) choose at least one of these steps
 
 Optional arguments:   
 	--help		Prints Usage
-	--step_1	Extract Subcortical Measures (e.g. --step_1 true or false)
-	--step_2	Extract Cortical Measures (e.g. --step_2 true or false)
-	--step_3	Quality Checking Subcortical Measures (e.g. --step_3 true or false)
-	--step_4	Quality Checking Cortical Measures - Internal Surface Method (e.g. --step_4 true or false)
-	--step_5	Quality Checking Cortical Measures - External Surface Method (e.g. --step_5 true or false)
+	--step_1	Extract Subcortical Measures
+	--step_2	Extract Cortical Measures
+	--step_3	Quality Checking Subcortical Measures
+	--step_4	Quality Checking Cortical Measures - Internal Surface Method
+	--step_5	Quality Checking Cortical Measures - External Surface Method
 
 USAGE
     exit 1
@@ -198,8 +198,7 @@ if [[ "${step_val_3}" = true ]]; then
 	done
 
 	#Create QC webpage
-	qc_webpage=${out_dir}/qc/
-	cd ${qc_webpage}
+	cd ${qc_dir_subcort}
 
 	echo "<html>" 						>  ENIGMA_Subcortical_QC.html
 	echo "<head>"                       >> ENIGMA_Subcortical_QC.html
@@ -294,8 +293,7 @@ if [[ "${step_val_4}" = true ]]; then
 	done
 	
 	#Create QC webpage
-	qc_webpage=${out_dir}/qc/
-	cd ${qc_webpage}
+	cd ${qc_dir_cort_int}
 
 	echo "<html>" 						>  ENIGMA_Cortical_QC.html
 	echo "<head>"                       >> ENIGMA_Cortical_QC.html
@@ -364,37 +362,36 @@ if [[ "${step_val_5}" = true ]]; then
 	done
 
 	#Create QC webpage
-	cqc_webpage=${out_dir}/qc/
-	cd ${qc_webpage}
+	cd ${qc_dir_cort_ext}
 	
-	echo "<html>" 						>  QC_external.html
-	echo "<head>"                       >> QC_external.html
-	echo "<style type=\"text/css\">"	>> QC_external.html
-	echo "*"                            >> QC_external.html
-	echo "{"							>> QC_external.html
-	echo "margin: 0px;"					>> QC_external.html
-	echo "padding: 0px;"				>> QC_external.html
-	echo "}"							>> QC_external.html
-	echo "html, body"					>> QC_external.html
-	echo "{"							>> QC_external.html
-	echo "height: 100%;"				>> QC_external.html
-	echo "}"							>> QC_external.html
-	echo "</style>"						>> QC_external.html
-	echo "</head>"						>> QC_external.html
-	echo "<body>" 						>> QC_external.html
+	echo "<html>" 						>  ENIGMA_External_QC.html
+	echo "<head>"                       >> ENIGMA_External_QC.html
+	echo "<style type=\"text/css\">"	>> ENIGMA_External_QC.html
+	echo "*"                            >> ENIGMA_External_QC.html
+	echo "{"							>> ENIGMA_External_QC.html
+	echo "margin: 0px;"					>> ENIGMA_External_QC.html
+	echo "padding: 0px;"				>> ENIGMA_External_QC.html
+	echo "}"							>> ENIGMA_External_QC.html
+	echo "html, body"					>> ENIGMA_External_QC.html
+	echo "{"							>> ENIGMA_External_QC.html
+	echo "height: 100%;"				>> ENIGMA_External_QC.html
+	echo "}"							>> ENIGMA_External_QC.html
+	echo "</style>"						>> ENIGMA_External_QC.html
+	echo "</head>"						>> ENIGMA_External_QC.html
+	echo "<body>" 						>> ENIGMA_External_QC.html
 	for subj_id in `cat $subjectIDs`; do
-		echo "<table cellspacing=\"1\" style=\"width:100%;background-color:black;\">"									>> QC_external.html
-		echo "<tr>" 																									>> QC_external.html
-		echo "<td> <FONT COLOR=white FACE=\"Geneva, Arial\" SIZE=5> $subj_id </FONT> </td>" 							>> QC_external.html
-		echo "</tr>" 																									>> QC_external.html                                                                        
-		echo "<tr>" 																									>> QC_external.html 
-		echo "<td><a href=\"file:"$subj_id".lh.lat.png\"><img src=\""$subj_id".lh.lat.png\" width=\"100%\" ></a></td>"	>> QC_external.html
-		echo "<td><a href=\"file:"$subj_id".lh.med.png\"><img src=\""$subj_id".lh.med.png\" width=\"100%\" ></a></td>"	>> QC_external.html
-		echo "<td><a href=\"file:"$subj_id".rh.lat.png\"><img src=\""$subj_id".rh.lat.png\" width=\"100%\" ></a></td>"	>> QC_external.html
-		echo "<td><a href=\"file:"$subj_id".rh.med.png\"><img src=\""$subj_id".rh.med.png\" width=\"100%\" ></a></td>"	>> QC_external.html
-		echo "</tr>" 																									>> QC_external.html  
-		echo "</table>" 																								>> QC_external.html 
+		echo "<table cellspacing=\"1\" style=\"width:100%;background-color:black;\">"									>> ENIGMA_External_QC.html
+		echo "<tr>" 																									>> ENIGMA_External_QC.html
+		echo "<td> <FONT COLOR=white FACE=\"Geneva, Arial\" SIZE=5> $subj_id </FONT> </td>" 							>> ENIGMA_External_QC.html
+		echo "</tr>" 																									>> ENIGMA_External_QC.html                                                                        
+		echo "<tr>" 																									>> ENIGMA_External_QC.html 
+		echo "<td><a href=\"file:"$subj_id".lh.lat.png\"><img src=\""$subj_id".lh.lat.png\" width=\"100%\" ></a></td>"	>> ENIGMA_External_QC.html
+		echo "<td><a href=\"file:"$subj_id".lh.med.png\"><img src=\""$subj_id".lh.med.png\" width=\"100%\" ></a></td>"	>> ENIGMA_External_QC.html
+		echo "<td><a href=\"file:"$subj_id".rh.lat.png\"><img src=\""$subj_id".rh.lat.png\" width=\"100%\" ></a></td>"	>> ENIGMA_External_QC.html
+		echo "<td><a href=\"file:"$subj_id".rh.med.png\"><img src=\""$subj_id".rh.med.png\" width=\"100%\" ></a></td>"	>> ENIGMA_External_QC.html
+		echo "</tr>" 																									>> ENIGMA_External_QC.html  
+		echo "</table>" 																								>> ENIGMA_External_QC.html 
 	done;
-	echo "</body>" 																										>> QC_external.html
-	echo "</html>" 																										>> QC_external.html
+	echo "</body>" 																										>> ENIGMA_External_QC.html
+	echo "</html>" 																										>> ENIGMA_External_QC.html
 fi
