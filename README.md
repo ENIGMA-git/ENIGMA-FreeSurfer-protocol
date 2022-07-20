@@ -48,16 +48,16 @@ This script will extract the values for each FreeSurfer region of interest (ROI)
 Run script:
 
       sh enigma_fs_wrapper_script.sh --subjects /.../subjectIDs.txt \
-						 --fsdir /../FreeSurfer_output_path/ \
-						 --outdir /.../Output_directory \
-						 --script /.../ENIGMA_dependency_scripts \
-						 --matlab /.../local/MATLAB_path \
-						 --step_1 true \
-						 --step_2 true \
-						 --step_3 false \
-						 --step_4 true \
-						 --step_5 true \
-						 --fs7 true or false
+				     --fsdir /../FreeSurfer_output_path/ \
+				     --outdir /.../Output_directory \
+				     --script /.../ENIGMA_dependency_scripts \
+				     --matlab /.../local/MATLAB_path \
+				     --step_1 true \
+				     --step_2 true \
+			             --step_3 false \
+				     --step_4 true \
+				     --step_5 true \
+				     --fs7 true 
       N.B. --step_(1:5) choose at least one of these steps 
 
 Use `--help` to see all options.
