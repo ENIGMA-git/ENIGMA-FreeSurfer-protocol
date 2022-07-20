@@ -108,7 +108,7 @@ done
 
 
 # Checking mandatory arguments
-if [[ -z ${subjectIDs} || -z ${fs_dir} ||  -z ${scripts_dir} || -z ${matlab_dir} || -z ${out_dir} || -z ${fs_version} ]]; then
+if [[ -z ${subjectIDs} || -z ${fs_dir} ||  -z ${scripts_dir} || -z ${MCRROOT} || -z ${out_dir} || -z ${fs_version} ]]; then
 	echo "ERROR: --subjects --fsdir, --script, --matlab, --outdir are mandatory arguments. Please see usage: \n"
     Usage >&2
 fi
