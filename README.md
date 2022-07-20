@@ -7,7 +7,7 @@ All scripts are in a for loop configuration and should be run from within your s
 
 #### Overview:
 * [Run FreeSurfer](#run-freesurfer)
-* [Cortical & Subcortical measures extraction and QC](#Cortical-&-Subcortical-measures-extraction-and-QC)
+* [Cortical & Subcortical measures extraction and QC](#cortical-and-subcortical-measures-extraction-and-qc)
 
 ## Run FreeSurfer
 The main step is to run [FreeSurfer](http://surfer.nmr.mgh.harvard.edu/fswiki/recon-all)’s `recon-all` command on your T1 weighted images. Before you want to work with FreeSurfer, configure your environment in your script. All information on how to set up and install FreeSurfer can be found on [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/fswiki/QuickInstall)'s webpage. Make sure that you also [register](https://surfer.nmr.mgh.harvard.edu/registration.html) to obtain a license to use FreeSurfer.
@@ -34,12 +34,36 @@ Depending on the number of your scans and the processing speed of your computer,
 
 If a subject has failed, there will (most likely) be a `recon-all.error` file in their subject's scripts subdirecoty. Check the subject's `recon-all.log` file to help with troubleshooting.   
 
-## Cortical & Subcortical measures extraction and QC
+## Cortical and Subcortical measures extraction and QC
 
-Follow the scripts and instructions in the [cortical](https://github.com/ENIGMA-git/ENIGMA-FreeSurfer-protocol/tree/main/cortical) folder.
+This script will extract the values for each FreeSurfer region of interest (ROI) and generate PNG images to check your cortical and subcortical ROI images.
 
-## Subcortical extraction and QC
+* _step1:_ Extract subcortical volumes.
+* _step2:_ Extract cortical measures (surface area and thickness Average)
+* _step3:_ Quality Checking Subcortical Measures
+* _step4:_ Quality Checking Cortical Measures - Internal Surface Method
+* _step5:_ Quality Checking Cortical Measures - External Surface Method
 
-Follow the scripts and instructions in the [subcortical](https://github.com/ENIGMA-git/ENIGMA-FreeSurfer-protocol/tree/main/subcortical) folder.
+
+Run script:
+
+      sh enigma_fs_wrapper_script.sh --subjects /.../subjectIDs.txt \
+						 --fsdir /../FreeSurfer_output_path/ \
+						 --outdir /.../Output_directory \
+						 --script /.../ENIGMA_dependency_scripts \
+						 --matlab /.../local/MATLAB_path \
+						 --step_1 true \
+						 --step_2 true \
+						 --step_3 false \
+						 --step_4 true \
+						 --step_5 true \
+						 --fs7 true or false
+      N.B. --step_(1:5) choose at least one of these steps 
+
+Use `--help` to see all options.
+
+
+
+
 
 
