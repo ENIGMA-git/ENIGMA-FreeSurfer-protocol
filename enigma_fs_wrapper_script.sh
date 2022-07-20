@@ -24,7 +24,7 @@ N.B. --step_(1:5) choose at least one of these steps
 Optional arguments:   
 	--help		Prints Usage
 	--step_1	Extract Subcortical Measures (e.g. --step_1 true or false)
-	--step_2	Extract Cortical Measures (e.g. --step_2 true)
+	--step_2	Extract Cortical Measures (e.g. --step_2 true or false)
 	--step_3	Quality Checking Subcortical Measures (e.g. --step_3 true or false)
 	--step_4	Quality Checking Cortical Measures - Internal Surface Method (e.g. --step_4 true or false)
 	--step_5	Quality Checking Cortical Measures - External Surface Method (e.g. --step_5 true or false)
