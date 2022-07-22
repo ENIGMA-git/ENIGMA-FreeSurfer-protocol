@@ -38,11 +38,11 @@ If a subject has failed, there will (most likely) be a `recon-all.error` file in
 
 This script will extract the values for each FreeSurfer region of interest (ROI) and generate PNG images to check your cortical and subcortical ROI images.
 
-* _step1:_ Extract subcortical volumes.
-* _step2:_ Extract cortical measures (surface area and thickness Average)
-* _step3:_ Quality Checking Subcortical Measures
-* _step4:_ Quality Checking Cortical Measures - Internal Surface Method
-* _step5:_ Quality Checking Cortical Measures - External Surface Method
+* _Step 1:_ Extract subcortical volumes.
+* _Step 2:_ Extract cortical measures (surface area and thickness Average)
+* _Step 3:_ Quality Checking Subcortical Measures
+* _Step 4:_ Quality Checking Cortical Measures - Internal Surface Method
+* _Step 5:_ Quality Checking Cortical Measures - External Surface Method
 
 
 Run script:
