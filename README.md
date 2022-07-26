@@ -38,6 +38,7 @@ If a subject has failed, there will (most likely) be a `recon-all.error` file in
 
 The next step is to get each subject's subcortical volumes and cortical surface area and thickness average of each region of interst (ROI) after running FreeSurfer. This script will extract the values for each FreeSurfer region of interest (ROI) and generate PNG images to check your cortical and subcortical ROI images. It assumes that your FreeSurfer output are organized in a standard way: _/enigma/Parent_Folder/FreeSurfer/outputs/subject1/_
 
+**SCRIPT: `enigma_fs_wrapper_script.sh`**
 
 * _Step 1:_ Extract Subcortical Measures (volumes)
 * _Step 2:_ Extract Cortical Measures (surface area and cortical thickness average)
@@ -84,9 +85,9 @@ Unsure of how to rate a segmentation from the PNG? Here is an additional quick c
 
 **SCRIPT: `view_FS_3d_QC.sh`**
 
-II.	Record your QC ratings in an Excel file, as provided in the sample Excel file: `Subcortical_QC_ENIGMA_dataset.xlsx` and `Cortical_QC_ENIGMA_dataset.xlsx`
+II.	Record your QC ratings in an Excel file, as provided in the sample Excel file: `template_Subcortical_QC_ENIGMA_dataset.xlsx` and `template_Cortical_QC_ENIGMA_dataset.xlsx`
 
-III.	Merge the extracted measures with your QC ratings: jupyter notebook coming soon!
+III.	Automatically merge the extracted measures with your QC ratings: script coming soon!
 <!--- edit_spreadsheet_subcortical.ipynb. This Jupyter Notebook will automatically replace the FreeSurfer measures with NA's if they have been failed by a QC user. You will need to edit the input and output CSV paths in the script. The input is a CSV containing FreeSurfer generated values and your QC sheet. Specifically, the user needs to append the following three CSV's into one, with the subject ID's listed in Column A: (1) Subcortical_QC_ENIGMA_dataset.xlsx, (2) LandRvolumes.csv. The QC notation must follow the rule outlined in the ENIGMA Subcortical QC guide (coming soon) where the QC user will note 1 under each ROI that needs to be failed. If a subject has failed completely, make sure the ICV is also NA’ed. Here is an example file: Subcortical_QC_ENIGMA_dataset_and measures_merged.csv --->
 <!--- `edit_spreadsheet_cortical.ipynb`. This Jupyter Notebook will automatically replace the FreeSurfer measures with NA's if they have been failed by a QC user. You will need to edit the input and output CSV paths in the script. The input is a CSV containing FreeSurfer generated values and your QC sheet. Specifically, the user needs to append the following three CSV's into one, with the subject ID's listed in Column A: 1) CorticalMeasuresENIGMA_SurfAvg.csv, 2) CorticalMeasuresENIGMA_ThickAvg.csv, and 3) Cortical_QC_ENIGMA_dataset.xlsx. The QC notation must follow the rule outlined in the ENIGMA Cortical QC guide (upd. 2017) where the QC user will note R, L or R/L  under each ROI depending on if the right, left or both hemisphere ROI failed. e (i.e., R, L or R/L). Also note that columns LThickness, RThickness, LSurfArea, RSurfArea and ICV appear in both CorticalMeasuresENIGMA_ThickAvg.csv and CorticalMeasuresENIGMA_SurfAvg.csv, but you only need to include them once in the merged CSV. If a subject has failed completely, make sure the LThickness, RThickness, LSurfArea, RSurfArea and ICV are also NA’ed. Here is an example file: Cortical_QC_ENIGMA_dataset_and_measures_merged.csv --->
 
