@@ -9,7 +9,7 @@ function Usage(){
 
 Usage:
 
-`basename $0` --subjects <subject.txt> --fsdir </freesufer/path> --outdir <output/directory> --script <ENIGMA/scripts/path> --matlab <MATLAB/path> --step_N 1 <other options>
+`basename $0` --subjects <subject.txt> --fsdir </freesufer/path> --outdir <output/directory> --script <ENIGMA/scripts/path> --matlab <MATLAB/path> --step_N 1 <other options> --fs7 <other options>
 
 Mandatory arguments:
 	--subjects	Provide a list of subjects stored in a text file
@@ -109,7 +109,25 @@ done
 
 # Checking mandatory arguments
 if [[ -z ${subjectIDs} || -z ${fs_dir} ||  -z ${scripts_dir} || -z ${matlab_dir} || -z ${out_dir} || -z ${fs_version} ]]; then
-	echo "ERROR: --subjects --fsdir, --script, --matlab, --outdir are mandatory arguments. Please see usage: \n"
+  if [[ -z ${subjectIDs} ]]; then
+    echo "--subjects missing" >&2
+  fi
+  if [[ -z ${fs_dir} ]]; then
+    echo "--fsdir missing"
+  fi
+  if [[ -z ${scripts_dir} ]]; then
+    echo "--script missing"
+  fi
+  if [[ -z ${matlab_dir} ]]; then
+    echo "--matlab missing";
+  fi
+  if [[ -z ${out_dir} ]]; then
+    echo "--outdir missing"
+  fi
+  if [[ -z ${fs_version} ]]; then
+    echo "--fs7 missing"
+  fi
+	echo "ERROR: --subjects --fsdir, --script, --matlab, --outdir, --fs7 are mandatory arguments. Please see usage:"
     Usage >&2
 fi
 
