@@ -42,14 +42,14 @@ Then run the following code from the save folder:
 
 This is a simple R script that will identify subjects with cortical thickness and surface area values that deviate from the rest of your subjects.
 
-**SCRIPT: `cortical_outliersl.R`**
+**SCRIPT: `cortical_outliers.R`**
 
 Edit the following in your script: 
 *	_line 5 and 37:_ directories to the resepctive location of your CorticalMeasuresENIGMA_ThickAvg.csv and CorticalMeasuresENIGMA_SurfAvg.csv generated in the previous step. 
 
 Run the script in your terminal or R window: 
 
-      R --no-save --slave < cortical_outliersl.R > /enigma/Parent_Folder/FreeSurfer/measures/outliers_cortical.log
+      R --no-save --slave < cortical_outliers.R > /enigma/Parent_Folder/FreeSurfer/measures/outliers_cortical.log
 
 This will generate a log file that will tell you which subjects are outliers and for which structures they are outliers for. Make sure you look at these subjects closely as you proceed with the quality check protocol to make sure they are segmented properly. 
 
